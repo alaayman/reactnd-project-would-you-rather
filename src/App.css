@@ -18,15 +18,17 @@
   color: white;
 }
 
-/* .Question {
-  width: 600px;
-  height: 150px;
-} */
-
 button {
   width: 100%;
 }
 
-button:current {
-  background: darkcyan !important;
+button:focus {
+  background: rgb(78, 77, 85) !important;
+}
+
+.navContainer {
+  height: auto;
+}
+.box-shadow {
+  box-shadow: rgb(0, 0, 0, 0.43) 5px 5px 5px 0px;
 }
