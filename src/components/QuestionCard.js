@@ -5,10 +5,13 @@ import { Link } from "react-router-dom";
 function QuestionCard(props) {
   const { user, question } = props;
   // console.log("props = --- ", questionId);
+
   return (
     <div>
       <div className="card mb-2 m-auto box-shadow">
-        <h4 className="card-header bg-darken-2 m-2 row g-0">{user.name}:</h4>
+        <h4 className="card-header bg-darken-2 m-2 row g-0">
+          {user.name}:{question.timestamp}
+        </h4>
         <div className="row g-0">
           <div className="col-sm-4 m-auto">
             <img
@@ -23,8 +26,11 @@ function QuestionCard(props) {
               <h5 className="card-title">Would you rather</h5>
               <p className="card-text">{question.optionOne.text} ...</p>
               <Link
-                to="/vote"
-                className="d-block btn-md btn-primary p-2 rounded-3"
+                to={{
+                  pathname: `/vote:${question.id}`,
+                  props: { fromCard: true },
+                }}
+                className="d-block text-light btn-md btn-primary p-2 rounded-3"
               >
                 View & Answer
               </Link>

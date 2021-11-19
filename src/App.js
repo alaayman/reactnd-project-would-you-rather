@@ -27,7 +27,7 @@ function App(props) {
             <Routes>
               <Route exact path="/" element={<Dashboard />} />
               <Route exact path="/home" element={<Dashboard />} />
-              <Route exact path="/vote" element={<Vote />} />
+              <Route exact path="/vote:id" element={<Vote />} />
               <Route exact path="/result" element={<Result />} />
               <Route exact path="/leaderbord" element={<Leaderbord />} />{" "}
               <Route exact path="/login" element={<Login />} />

@@ -39,7 +39,7 @@ function Navbar(props) {
                 onClick={() => {
                   logOut();
                 }}
-                className=" btn-sm btn-info "
+                className="btn-sm btn-info "
               >
                 Log out
               </button>

@@ -42,7 +42,7 @@ function Login(props) {
               ? alert("No user chosen")
               : setCurrentUser(selectValue);
           }}
-          className=" btn-primary  mt-5 p-2 w-25"
+          className="btn btn-primary  mt-5 p-2 w-25"
         >
           Log in
         </button>

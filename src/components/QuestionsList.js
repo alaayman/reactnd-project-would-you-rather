@@ -12,7 +12,7 @@ function QuestionsList(props) {
     activeTab === "answered"
       ? setfilteredQuestions(answeredQuestions)
       : setfilteredQuestions(unAnsweredQuestions);
-    // console.log(filteredQuestions);
+    console.log(filteredQuestions);
   }, [activeTab, answeredQuestions, unAnsweredQuestions]);
 
   return (
@@ -40,9 +40,9 @@ function QuestionsList(props) {
             Answered
           </button>
         </div>
-        {filteredQuestions.map((questionId) => (
-          <div className="list-group-item" key={questionId}>
-            <QuestionCard questionId={questionId} />
+        {filteredQuestions.map((question) => (
+          <div className="list-group-item" key={question.id}>
+            <QuestionCard questionId={question.id} />
           </div>
         ))}
       </div>
@@ -51,18 +51,21 @@ function QuestionsList(props) {
 }
 
 const mapStateToProps = ({ currentUser, users, questions }) => {
-  const questionsIds = Object.keys(questions);
+  const questionsIds = Object.keys(questions).map((id) => ({
+    id: id,
+    timestamp: questions[id].timestamp,
+  }));
   const unAnsweredQuestions = questionsIds
-    .filter((id) => {
+    .filter(({ id, timestamp }) => {
       return !users[currentUser.id].answers[id];
     })
-    .sort((a, b) => a.timestamp - b.timestamp);
+    .sort((a, b) => b.timestamp - a.timestamp);
   const answeredQuestions = questionsIds
-    .filter((id) => {
+    .filter(({ id, timestamp }) => {
       return users[currentUser.id].answers[id];
     })
-    .sort((a, b) => a.timestamp - b.timestamp);
-  // console.log(questionsIds);
+    .sort((a, b) => b.timestamp - a.timestamp);
+  console.log(questionsIds);
   return {
     // userId: currentUser.id,
     // users,
