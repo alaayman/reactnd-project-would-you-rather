@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 export const Vote = (props) => {
-  return <div></div>;
+  return <div>Vote</div>;
 };
 
 const mapStateToProps = (state) => ({});

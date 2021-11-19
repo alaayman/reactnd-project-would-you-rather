@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import handleInitialData from "./actions/shared";
 import "./App.css";
 import Dashboard from "./components/Dashboard";
@@ -13,14 +13,14 @@ import { Vote } from "./components/Vote";
 function App(props) {
   const { islogged, handleData } = props;
 
-  useEffect(() => handleData(), []);
+  useEffect(() => handleData(), [handleData]);
 
-  console.log("islogged ", props.islogged);
+  // console.log("islogged ", props.islogged);
   return (
     <div className="bg-gradient">
       <Navbar />
       <div className="App  m-auto">
-        <div className="col-lg-8 col-md-10 col-sm-12">
+        <div className="col-lg-6 col-md-8 col-sm-10">
           {!islogged ? (
             <Login />
           ) : (

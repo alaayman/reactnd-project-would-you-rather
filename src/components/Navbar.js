@@ -1,7 +1,10 @@
 import React from "react";
+import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
+import setCurrentUserAction from "../actions/currentUser";
 
-function Navbar() {
+function Navbar(props) {
+  const { user, logOut } = props;
   return (
     <div className="navContainer navbar navbar-expand-sm navbar-dark bg-dark fw-bold fs-5">
       <div className="container-fluid">
@@ -22,16 +25,47 @@ function Navbar() {
             </NavLink>
           </li>
         </nav>
-        <ul className="navbar-nav">
-          <li className="nav-item float-end">
-            <NavLink className="nav-link" to="/login">
-              Log out
-            </NavLink>
-          </li>
+        <ul className="nav navbar-dark bg-dark float-end">
+          {user ? (
+            <>
+              <img
+                src={require("../avatars/" + user.avatarURL).default}
+                className="img-fluid m-2"
+                alt="..."
+                width={40}
+              />
+              <div className="nav-item nav-link text-light ">{user.name}</div>
+              <button
+                onClick={() => {
+                  logOut();
+                }}
+                className=" btn-sm btn-info "
+              >
+                Log out
+              </button>
+            </>
+          ) : (
+            "mo user logged"
+          )}
         </ul>
       </div>
     </div>
   );
 }
 
-export default Navbar;
+const mapStateToProps = ({ currentUser, users }) => ({
+  user: users[currentUser.id],
+});
+
+const mapDispatchToProps = (dispatch) => {
+  const dispatchCurrentUser = (id) =>
+    dispatch(
+      setCurrentUserAction({
+        id: id,
+        loggedin: false,
+      })
+    );
+  return { logOut: dispatchCurrentUser };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

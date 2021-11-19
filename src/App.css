@@ -30,5 +30,5 @@ button:focus {
   height: auto;
 }
 .box-shadow {
-  box-shadow: rgb(0, 0, 0, 0.43) 5px 5px 5px 0px;
+  box-shadow: rgb(0, 0, 0, 0.43) 0px 0px 8px 2px;
 }

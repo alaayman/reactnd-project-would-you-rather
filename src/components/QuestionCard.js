@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 function QuestionCard(props) {
   const { user, question } = props;
@@ -21,9 +22,12 @@ function QuestionCard(props) {
             <div className="card-body">
               <h5 className="card-title">Would you rather</h5>
               <p className="card-text">{question.optionOne.text} ...</p>
-              <button className="btn-md btn-primary p-2 rounded-3">
+              <Link
+                to="/vote"
+                className="d-block btn-md btn-primary p-2 rounded-3"
+              >
                 View & Answer
-              </button>
+              </Link>
             </div>
           </div>
         </div>
