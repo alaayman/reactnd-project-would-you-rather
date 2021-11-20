@@ -1,14 +1,17 @@
+import { NotFound } from "http-errors";
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import handleInitialData from "./actions/shared";
 import "./App.css";
 import Dashboard from "./components/Dashboard";
-import { Leaderbord } from "./components/Leaderbord";
+import Leaderbord from "./components/Leaderbord";
 import Login from "./components/Login";
 import Navbar from "./components/Navbar";
-import { Result } from "./components/Result";
-import { Vote } from "./components/Vote";
+import NewQuestion from "./components/NewQuestion";
+import Question from "./components/Question";
+// import  Result  from "./components/Result";
+// import  Vote  from "./components/Vote";
 
 function App(props) {
   const { islogged, handleData } = props;
@@ -20,17 +23,21 @@ function App(props) {
     <div className="bg-gradient">
       <Navbar />
       <div className="App  m-auto">
-        <div className="col-lg-6 col-md-8 col-sm-10">
+        <div className="col-lg-8 col-md-8 col-sm-10">
           {!islogged ? (
             <Login />
           ) : (
             <Routes>
               <Route exact path="/" element={<Dashboard />} />
-              <Route exact path="/home" element={<Dashboard />} />
-              <Route exact path="/vote:id" element={<Vote />} />
-              <Route exact path="/result" element={<Result />} />
-              <Route exact path="/leaderbord" element={<Leaderbord />} />{" "}
-              <Route exact path="/login" element={<Login />} />
+              <Route path="/home" element={<Dashboard />} />
+              <Route path="/add" element={<NewQuestion />} />
+              <Route path="/leaderbord" element={<Leaderbord />} />
+              <Route path="/questions/:questionId" element={<Question />} />
+              <Route element={<NotFound />} />
+              {/* used in showing components while designing */}
+              {/* <Route path="/vote" element={<Vote />} />
+              <Route path="/result" element={<Result />} />
+              <Route path="/login" element={<Login />} /> */}
             </Routes>
           )}
         </div>

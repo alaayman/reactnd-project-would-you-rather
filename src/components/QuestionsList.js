@@ -12,40 +12,38 @@ function QuestionsList(props) {
     activeTab === "answered"
       ? setfilteredQuestions(answeredQuestions)
       : setfilteredQuestions(unAnsweredQuestions);
-    console.log(filteredQuestions);
+    // console.log(filteredQuestions);
   }, [activeTab, answeredQuestions, unAnsweredQuestions]);
 
   return (
-    <div>
-      <div className="list-group">
-        <div className="btn-group d-flex">
-          <button
-            onClick={() => {
-              if (activeTab === "answered") {
-                setactiveTab("notAnswered");
-              }
-            }}
-            className=" btn-lg btn-dark p-3 mt-3"
-          >
-            Not Answered
-          </button>
-          <button
-            onClick={() => {
-              if (activeTab === "notAnswered") {
-                setactiveTab("answered");
-              }
-            }}
-            className=" btn-lg btn-dark p-3 mt-3"
-          >
-            Answered
-          </button>
-        </div>
-        {filteredQuestions.map((question) => (
-          <div className="list-group-item" key={question.id}>
-            <QuestionCard questionId={question.id} />
-          </div>
-        ))}
+    <div className="list-group">
+      <div className="btn-group d-flex mt-3">
+        <button
+          onClick={() => {
+            if (activeTab === "answered") {
+              setactiveTab("notAnswered");
+            }
+          }}
+          className=" btn-lg btn-dark p-2"
+        >
+          Not Answered
+        </button>
+        <button
+          onClick={() => {
+            if (activeTab === "notAnswered") {
+              setactiveTab("answered");
+            }
+          }}
+          className=" btn-lg btn-dark p-2"
+        >
+          Answered
+        </button>
       </div>
+      {filteredQuestions.map((question) => (
+        <div className="list-group-item" key={question.id}>
+          <QuestionCard questionId={question.id} />
+        </div>
+      ))}
     </div>
   );
 }
@@ -65,7 +63,7 @@ const mapStateToProps = ({ currentUser, users, questions }) => {
       return users[currentUser.id].answers[id];
     })
     .sort((a, b) => b.timestamp - a.timestamp);
-  console.log(questionsIds);
+  // console.log(questionsIds);
   return {
     // userId: currentUser.id,
     // users,

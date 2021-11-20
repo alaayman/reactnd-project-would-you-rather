@@ -9,20 +9,21 @@ function Login(props) {
   const [selectValue, setselectValue] = useState("");
 
   return !currentUser.loggedin ? (
-    <div className="container bg-success bg-opacity-50 m-auto mt-5 p-5 box-shadow rounded-3 justify-content-center align-items-center ">
-      <form>
-        <img src={img} width="200" alt=" " />
-        <h1> login screen </h1>
-        <div className="spinner-border text-dark m-3" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </div>
+    <div className="bg-light bg-gradient m-auto my-5 mx-2 p-3 box-shadow rounded-3 justify-content-center align-items-center ">
+      <div className="card-header  text-primary fst-italic">
+        <h4> Welcome to the </h4>
+        <h3> WOULD YOU RATHER GAME </h3>
+        <p>to proceed please Login</p>
+      </div>
+      <div className="card-body w-75 m-auto">
+        <img className=" m-4 " src={img} width="150" alt=" " />
         <select
           defaultValue="Choose user"
           placeholder={"Choose user"}
           onChange={(e) => {
             setselectValue(e.target.value);
           }}
-          className="form-select form-select-lg w-75 m-auto"
+          className="form-select form-select-lg m-auto"
         >
           {<option disabled={true}>Choose user</option>}
           {Object.values(users).map((user) => (
@@ -42,11 +43,11 @@ function Login(props) {
               ? alert("No user chosen")
               : setCurrentUser(selectValue);
           }}
-          className="btn btn-primary  mt-5 p-2 w-25"
+          className="btn btn-primary  my-3 p-2 w-50"
         >
           Log in
         </button>
-      </form>
+      </div>
     </div>
   ) : (
     <Navigate to="/home" />

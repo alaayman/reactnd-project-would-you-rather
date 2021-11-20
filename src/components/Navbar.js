@@ -15,7 +15,7 @@ function Navbar(props) {
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="/question">
+            <NavLink className="nav-link" to="/add">
               New Question
             </NavLink>
           </li>
@@ -30,14 +30,14 @@ function Navbar(props) {
             <>
               <img
                 src={require("../avatars/" + user.avatarURL).default}
-                className="img-fluid m-2"
+                className="img-fluid m-2 rounded-circle"
                 alt="..."
                 width={40}
               />
               <div className="nav-item nav-link text-light ">{user.name}</div>
               <button
                 onClick={() => {
-                  logOut();
+                  logOut(0);
                 }}
                 className="btn-sm btn-info "
               >
