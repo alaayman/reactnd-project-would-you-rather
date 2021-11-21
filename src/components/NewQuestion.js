@@ -56,7 +56,11 @@ function NewQuestion(props) {
               />
             </div>
           </div>
-          <button onClick={handleSubmit} className="btn btn-primary my-4 w-50">
+          <button
+            disabled={optionOneText === "" || optionTwoText === ""}
+            onClick={handleSubmit}
+            className="btn btn-primary my-4 w-50"
+          >
             Submit
           </button>
         </div>
