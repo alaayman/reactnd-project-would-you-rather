@@ -7,11 +7,25 @@ function Leaderbord(props) {
 
   return (
     <div>
-      {sortedUser.map((user) => (
-        <div key={user}>
-          <UserStats user={users[user]} />
-        </div>
-      ))}
+      {sortedUser.map((user, index) => {
+        const order = (index) => {
+          switch (index) {
+            case 0:
+              return "gold";
+            case 1:
+              return "silver";
+            case 2:
+              return "white";
+            default:
+              return "white";
+          }
+        };
+        return (
+          <div key={user}>
+            <UserStats user={users[user]} order={order(index)} />
+          </div>
+        );
+      })}
     </div>
   );
 }

@@ -14,57 +14,53 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `yarn test`
+# Would you rather App Project
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Overview
 
-### `yarn build`
+This project is project 2 of udacity web development course with egyptian FWD initiative it requires creating an asynchronous web app that uses Web API and user data to dynamically update the UI.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Languages used
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- HTML
+- CSS
+- JavaScript
+- node.js with Express
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## How to use
 
-### `yarn eject`
+1. Download the app
+2. Install node.js you can download it from here <https://nodejs.org/en/download>
+3. Use npm install from the app folder
+4. Run node server.js
+5. Open on your browser <http://localhost:5000>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## What i did
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- I installed node.js and express , cors, body-parser
+- Created server listening on port 5000
+- Prepared tow strings to get data by zip code as mentioned in rubric and by city id if there is time to deploy it
+  ps: not enough time had to implement zipcode only
+- Changed date to d/m/yyyy
+- Used fetch to get data from <https://openweathermap.org>
+- Added feelings to the data retrieved from openWeather and posted it to localserver at route /addData
+- Had a lot of trouble with .then() took me a while to understand how it works
+- Put all data from the post in projectData for the usage of more fields in the future
+- Only used city name , weather icon and description so far
+- Created a historyData array to put projectData in it for a history feature if time allowed ps:didn't implement it yet
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Credits
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+I used guidance and ideas from :
 
-## Learn More
+- <https://udacity.com>
+- <https://developer.mozilla.org>
+- <https://www.w3schools.com/>
+- Used background image from <https://all-free-download.com/free-photos/>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Special mention for **(Node.js and Express.js - Full Course)** by **freeCodeCamp.org** at youtube for a very good course on node.js and express
+  Watch it here <https://www.youtube.com/watch?v=Oe421EPjeBE&t=3242s>
+- And special mention for the glass look idea from **(Build Glass Website with HTML and CSS Tutorial)** by **(Dev Ed)** on youtube
+  Watch it here <https://www.youtube.com/watch?v=O7WbVj5apxU&t=679s>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Thank you all for helping :smile:

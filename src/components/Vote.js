@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { handleAddAnswer } from "../actions/shared";
-import NotFound from "./NotFound";
+import NoMatch from "./NoMatch";
 
 function Vote(props) {
   const [answer, setAnswer] = useState("");
   const { questionId, currentUserId, handleVote, users, question } = props;
 
-  if (question === undefined) return <NotFound />;
+  if (question === undefined) return <NoMatch />;
 
   const { optionOne, optionTwo } = question;
   const handleChange = (e) => {

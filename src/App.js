@@ -1,4 +1,4 @@
-import { NotFound } from "http-errors";
+import NoMatch from "./components/NoMatch";
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import { Route, Routes } from "react-router-dom";
@@ -33,7 +33,7 @@ function App(props) {
               <Route path="/add" element={<NewQuestion />} />
               <Route path="/leaderbord" element={<Leaderbord />} />
               <Route path="/questions/:questionId" element={<Question />} />
-              <Route path="/*" element={<NotFound />} />
+              <Route path="*" element={<NoMatch />} />
               {/* used in showing components while designing */}
               {/* <Route path="/vote" element={<Vote />} />
               <Route path="/result" element={<Result />} />

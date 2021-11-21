@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
-import NotFound from "./NotFound";
+import NoMatch from "./NoMatch";
 
 function Result(props) {
   const { currentUser, users, question } = props;
 
-  if (question === undefined) return <NotFound />;
+  if (question === undefined) return <NoMatch />;
 
   const { optionOne, optionTwo } = question;
   const numAnswerOne = optionOne.votes.length;

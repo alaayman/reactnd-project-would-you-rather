@@ -22,7 +22,8 @@ button {
   width: 100%;
 }
 
-button:focus {
+button:focus,
+button:disabled {
   background: rgb(78, 77, 85) !important;
 }
 

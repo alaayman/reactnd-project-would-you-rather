@@ -2,9 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 
 function UserStats(props) {
-  const { user } = props;
+  const { user, order } = props;
   const numAnswered = Object.keys(user.answers).length;
   const numQuestions = user.questions.length;
+
   return (
     <div className="card box-shadow my-3 py-2 mx-1">
       <div className="card-body row g-1 justify-content-around align-content-center">
@@ -28,8 +29,8 @@ function UserStats(props) {
         <div className="col-2 d-flex flex-column border justify-justify-content-evenly">
           <h5 className="card-header ">score</h5>
           <div
-            className="border m-auto p-2 fs-5 fw-bolder bg-success rounded-circle box-shadow"
-            style={{ width: 50, height: 50 }}
+            className="border m-auto p-2 fs-5 fw-bolder bg-success- rounded-circle box-shadow"
+            style={{ width: 50, height: 50, background: order }}
           >
             {numAnswered + numQuestions}
           </div>

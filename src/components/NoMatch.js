@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-function NotFound() {
+function NoMatch() {
   return (
     <div className="container  card p-3 mt-5 box-shadow">
       <div className="card-body p-3 ">
@@ -15,4 +15,4 @@ function NotFound() {
   );
 }
 
-export default NotFound;
+export default NoMatch;

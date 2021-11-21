@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { useParams } from "react-router";
-import NotFound from "./NotFound";
+import NoMatch from "./NoMatch";
 import Result from "./Result";
 import Vote from "./Vote";
 
@@ -13,8 +13,8 @@ function Question(props) {
 
   // console.log(answered);
 
-  if (questions[questionId] === null || questions[questionId] === "undefined")
-    return <NotFound />;
+  if (questions[questionId] === null || questions[questionId] === undefined)
+    return <NoMatch />;
   return (
     <>
       {answered ? (

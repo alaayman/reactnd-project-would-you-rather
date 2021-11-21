@@ -4,14 +4,14 @@ import QuestionCard from "./QuestionCard";
 
 function QuestionsList(props) {
   const { answeredQuestions, unAnsweredQuestions } = props;
-  const [activeTab, setactiveTab] = useState("notAnswered");
-  const [filteredQuestions, setfilteredQuestions] =
+  const [activeTab, setActiveTab] = useState("notAnswered");
+  const [filteredQuestions, setFilteredQuestions] =
     useState(unAnsweredQuestions);
 
   useEffect(() => {
     activeTab === "answered"
-      ? setfilteredQuestions(answeredQuestions)
-      : setfilteredQuestions(unAnsweredQuestions);
+      ? setFilteredQuestions(answeredQuestions)
+      : setFilteredQuestions(unAnsweredQuestions);
     // console.log(filteredQuestions);
   }, [activeTab, answeredQuestions, unAnsweredQuestions]);
 
@@ -19,9 +19,10 @@ function QuestionsList(props) {
     <div className="list-group">
       <div className="btn-group d-flex mt-3">
         <button
+          disabled={activeTab === "notAnswered"}
           onClick={() => {
             if (activeTab === "answered") {
-              setactiveTab("notAnswered");
+              setActiveTab("notAnswered");
             }
           }}
           className=" btn-lg btn-dark p-2"
@@ -29,9 +30,10 @@ function QuestionsList(props) {
           Not Answered
         </button>
         <button
+          disabled={activeTab === "answered"}
           onClick={() => {
             if (activeTab === "notAnswered") {
-              setactiveTab("answered");
+              setActiveTab("answered");
             }
           }}
           className=" btn-lg btn-dark p-2"
@@ -46,9 +48,10 @@ function QuestionsList(props) {
           </div>
         ))
       ) : (
-        <h2 className="card">
-          No more unanswered questions<h3>Create new ones</h3>
-        </h2>
+        <div className="card p-3">
+          <h2>No more unanswered questions</h2>
+          <h3>Create new ones</h3>
+        </div>
       )}
       {}
     </div>

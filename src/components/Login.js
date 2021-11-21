@@ -16,15 +16,14 @@ function Login(props) {
         <h3> WOULD YOU RATHER GAME </h3>
         <p>to proceed please Login</p>
       </div>
-      <div className="card-body w-75 m-auto">
+      <div className="card-body w-75 m-auto ">
         <img className=" m-4 " src={img} width="150" alt=" " />
         <select
           defaultValue="Choose user"
-          placeholder={"Choose user"}
           onChange={(e) => {
             setselectValue(e.target.value);
           }}
-          className="form-select form-select-lg m-auto"
+          className="form-select form-select-lg m-auto my-4"
         >
           {<option disabled={true}>Choose user</option>}
           {Object.values(users).map((user) => (
@@ -45,7 +44,7 @@ function Login(props) {
               : setCurrentUser(selectValue);
             <NavLink to="/home" />;
           }}
-          className="btn btn-primary  my-3 p-2 w-50"
+          className="btn btn-primary  my-5 p-2 w-50"
         >
           Log in
         </button>
