@@ -28,12 +28,15 @@ function Vote(props) {
   return (
     <div className="m-5">
       <div className="list-group-item text-start p-3 card mb-2 m-auto box-shadow">
-        <h3 className="card-header bg-darken-2 m-2 row g-0">sara Edo</h3>
+        <h3 className="card-header bg-darken-2 m-2 row g-0">
+          {users[question.author].name}
+        </h3>
         <div className="row g-0">
           <div className="col-sm-4 m-auto text-center">
             <img
               src={
-                require("../avatars/" + users[currentUserId].avatarURL).default
+                require("../avatars/" + users[question.author].avatarURL)
+                  .default
               }
               className="img-fluid rounded-circle"
               alt="..."
