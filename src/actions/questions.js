@@ -1,7 +1,9 @@
-import { GET_QUESTIONS_DATA } from "./dataTypes";
+import { ADD_QUESTION, GET_QUESTIONS_DATA } from "./dataTypes";
 
-const getquestionsDataAction = (questions) => {
+export const getQuestionsDataAction = (questions) => {
   return { type: GET_QUESTIONS_DATA, payload: questions };
 };
 
-export default getquestionsDataAction;
+export const newQuestion = (question) => {
+  return { type: ADD_QUESTION, payload: question };
+};

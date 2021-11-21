@@ -11,6 +11,6 @@ export function saveQuestion(question) {
 }
 
 export function saveQuestionAnswer(currentUser, questionId, answer) {
-  // console.log('from API', { currentUser, questionId, answer });
+  console.log("from API", { currentUser, questionId, answer });
   return getter._saveQuestionAnswer({ currentUser, questionId, answer });
 }

@@ -1,17 +1,20 @@
+import NotFound from "./NotFound";
 import React from "react";
 import { connect } from "react-redux";
-import { useParams } from "react-router";
+import { Navigate, useParams } from "react-router";
 import Result from "./Result";
 import Vote from "./Vote";
 
 function Question(props) {
   // take id and answered or not from props
   const { questionId } = useParams();
-  const { userId, users } = props;
+  const { userId, users, questions } = props;
   const answered = users[userId].answers[questionId] ? true : false;
 
   console.log(answered);
 
+  if (questions[questionId] === null || questions[questionId] === "undefined")
+    return <NotFound />;
   return (
     <>
       {answered ? (
@@ -23,10 +26,8 @@ function Question(props) {
   );
 }
 
-const mapStateToProps = ({ users, currentUser }) => {
-  return { userId: currentUser.id, users: users };
+const mapStateToProps = ({ users, currentUser, questions }) => {
+  return { userId: currentUser.id, users: users, questions: questions };
 };
 
-const mapDispatchToProps = {};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Question);
+export default connect(mapStateToProps)(Question);

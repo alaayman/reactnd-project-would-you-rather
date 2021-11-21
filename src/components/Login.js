@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import setCurrentUserAction from "../actions/currentUser";
 import img from "../avatars/logo.svg";
 import { Navigate } from "react-router";
+import { NavLink } from "react-router-dom";
 
 function Login(props) {
   const { users, currentUser, setCurrentUser } = props;
@@ -42,6 +43,7 @@ function Login(props) {
             selectValue === ""
               ? alert("No user chosen")
               : setCurrentUser(selectValue);
+            <NavLink to="/home" />;
           }}
           className="btn btn-primary  my-3 p-2 w-50"
         >

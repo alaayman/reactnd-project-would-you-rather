@@ -33,7 +33,7 @@ function App(props) {
               <Route path="/add" element={<NewQuestion />} />
               <Route path="/leaderbord" element={<Leaderbord />} />
               <Route path="/questions/:questionId" element={<Question />} />
-              <Route element={<NotFound />} />
+              <Route path="*" element={<NotFound />} />
               {/* used in showing components while designing */}
               {/* <Route path="/vote" element={<Vote />} />
               <Route path="/result" element={<Result />} />
