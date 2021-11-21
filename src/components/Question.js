@@ -1,7 +1,7 @@
-import NotFound from "./NotFound";
 import React from "react";
 import { connect } from "react-redux";
-import { Navigate, useParams } from "react-router";
+import { useParams } from "react-router";
+import NotFound from "./NotFound";
 import Result from "./Result";
 import Vote from "./Vote";
 
@@ -11,7 +11,7 @@ function Question(props) {
   const { userId, users, questions } = props;
   const answered = users[userId].answers[questionId] ? true : false;
 
-  console.log(answered);
+  // console.log(answered);
 
   if (questions[questionId] === null || questions[questionId] === "undefined")
     return <NotFound />;

@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { useNavigate } from "react-router";
 import { handleNewQuestion } from "../actions/shared";
 
 function NewQuestion(props) {
-  const { author, handleNew } = props; // named it author just in case _saveQuestin need author in props
+  const { author, handleNew } = props; // named it author just in case _saveQuestion need author in props
   const [optionOneText, setOptionOneText] = useState("");
   const [optionTwoText, setOptionTwoText] = useState("");
+  const navigate = useNavigate();
 
   const handleChangeOne = (e) => {
     setOptionOneText(e.target.value);
@@ -17,9 +19,10 @@ function NewQuestion(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const rawQuestion = { optionOneText, optionTwoText, author };
-    // took me a long more than 4 hours time to notice i need optionOneText and not optionOne
+    // took me a long time more than 4 hours to notice i need optionOneText and not optionOne
     // console.log({ optionOneText, optionTwoText, author });
     handleNew(rawQuestion);
+    navigate("/home");
   };
 
   return (

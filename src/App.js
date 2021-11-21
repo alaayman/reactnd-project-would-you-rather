@@ -28,12 +28,12 @@ function App(props) {
             <Login />
           ) : (
             <Routes>
-              <Route exact path="/" element={<Dashboard />} />
+              <Route path="/" element={<Dashboard />} />
               <Route path="/home" element={<Dashboard />} />
               <Route path="/add" element={<NewQuestion />} />
               <Route path="/leaderbord" element={<Leaderbord />} />
               <Route path="/questions/:questionId" element={<Question />} />
-              <Route path="*" element={<NotFound />} />
+              <Route path="/*" element={<NotFound />} />
               {/* used in showing components while designing */}
               {/* <Route path="/vote" element={<Vote />} />
               <Route path="/result" element={<Result />} />

@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import logo from "../avatars/Avatar-John.svg";
 
 function UserStats(props) {
   const { user } = props;

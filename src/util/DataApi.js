@@ -10,7 +10,7 @@ export function saveQuestion(question) {
   return getter._saveQuestion(question);
 }
 
-export function saveQuestionAnswer(currentUser, questionId, answer) {
-  console.log("from API", { currentUser, questionId, answer });
-  return getter._saveQuestionAnswer({ currentUser, questionId, answer });
+export function saveQuestionAnswer({ authedUser, qid, answer }) {
+  console.log("from api", { authedUser, qid, answer });
+  return getter._saveQuestionAnswer({ authedUser, qid, answer });
 }

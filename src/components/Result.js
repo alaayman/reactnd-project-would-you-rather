@@ -1,9 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import NotFound from "./NotFound";
 
 function Result(props) {
-  const { questionId, currentUser, users, question } = props;
+  const { currentUser, users, question } = props;
+
+  if (question === undefined) return <NotFound />;
+
   const { optionOne, optionTwo } = question;
   const numAnswerOne = optionOne.votes.length;
   const numAnswerTwo = optionTwo.votes.length;
@@ -11,14 +15,17 @@ function Result(props) {
   const percentageOne = Math.round((numAnswerOne / numOfAnswers) * 100);
   const percentageTwo = Math.round((numAnswerTwo / numOfAnswers) * 100);
 
-  console.log(percentageOne, percentageTwo);
+  // console.log(percentageOne, percentageTwo);
 
   return (
     <div className="my-5 mx-2">
       <div className="list-group-item text-start p-3 card mb-2 m-auto box-shadow">
-        <Link to="/home" className="float-end">
-          Back
-        </Link>
+        <NavLink
+          to="/home"
+          className="float-end fs-5 btn-danger btn fw-bold m-2 text-black border-3 border "
+        >
+          X
+        </NavLink>
         <h4 className="card-header bg-darken-2 m-2 row g-0">
           Asked by {users[question.author].name}
         </h4>
@@ -29,7 +36,7 @@ function Result(props) {
                 require("../avatars/" + users[question.author].avatarURL)
                   .default
               }
-              className="img-fluid rounded-circle"
+              className="img-fluid rounded-circle box-shadow"
               alt="..."
               width={120}
             />
@@ -38,14 +45,14 @@ function Result(props) {
             <div className="card-body border-start">
               <h5 className="card-title mb-4">Results</h5>
               <div className="container-fluid">
-                <div className="box-shadow p-3 my-3 position-relative">
+                <div className="box-shadow p-3 my-4 position-relative">
                   <p>Would you rather {optionOne.text} ?</p>
                   {optionOne.votes.includes(currentUser.id) ? (
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+                    <span className="position-absolute top-0 start-100 translate-middle-x badge rounded-pill bg-success">
                       Your choice
                     </span>
                   ) : null}
-                  <div class="progress my-3" style={{ height: 20 }}>
+                  <div className="progress my-3" style={{ height: 20 }}>
                     <div
                       className="progress-bar"
                       role="progressbar"
@@ -61,19 +68,18 @@ function Result(props) {
                     {numAnswerOne} out of {numOfAnswers} votes
                   </p>
                 </div>
-                <div className="box-shadow p-3 my-3 position-relative">
+                <div className="box-shadow p-3 mt-4 position-relative">
                   <p>Would you rather {optionTwo.text} ?</p>
                   {optionTwo.votes.includes(currentUser.id) ? (
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+                    <span className="position-absolute top-0 start-100 translate-middle-x badge rounded-pill bg-success">
                       Your choice
                     </span>
                   ) : null}
                   <div className="progress my-3" style={{ height: 20 }}>
                     <div
-                      class="progress-bar"
+                      className="progress-bar"
                       role="progressbar"
                       style={{ width: `${percentageTwo}%` }}
-                      aria-valuenow="25"
                       aria-valuenow={percentageTwo}
                       aria-valuemin="0"
                       aria-valuemax="100"
@@ -103,6 +109,4 @@ const mapStateToProps = (
   question: questions[questionId],
 });
 
-const mapDispatchToProps = {};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Result);
+export default connect(mapStateToProps)(Result);

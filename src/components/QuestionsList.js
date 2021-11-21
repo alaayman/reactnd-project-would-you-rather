@@ -39,11 +39,18 @@ function QuestionsList(props) {
           Answered
         </button>
       </div>
-      {filteredQuestions.map((question) => (
-        <div className="list-group-item" key={question.id}>
-          <QuestionCard questionId={question.id} />
-        </div>
-      ))}
+      {filteredQuestions.length ? (
+        filteredQuestions.map((question) => (
+          <div className="list-group-item" key={question.id}>
+            <QuestionCard questionId={question.id} />
+          </div>
+        ))
+      ) : (
+        <h2 className="card">
+          No more unanswered questions<h3>Create new ones</h3>
+        </h2>
+      )}
+      {}
     </div>
   );
 }
@@ -66,8 +73,9 @@ const mapStateToProps = ({ currentUser, users, questions }) => {
   // console.log(questionsIds);
   return {
     // userId: currentUser.id,
-    // users,
     // questionsIds: questionsIds,
+    // users,
+    // questions,
     answeredQuestions: answeredQuestions,
     unAnsweredQuestions: unAnsweredQuestions,
   };

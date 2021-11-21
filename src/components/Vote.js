@@ -1,10 +1,30 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { handleAddAnswer } from "../actions/shared";
+import NotFound from "./NotFound";
 
 function Vote(props) {
-  const [choice, setchoice] = useState(null);
-  const { questionId, currentUser, users, question } = props;
+  const [answer, setAnswer] = useState("");
+  const { questionId, currentUserId, handleVote, users, question } = props;
+
+  if (question === undefined) return <NotFound />;
+
   const { optionOne, optionTwo } = question;
+  const handleChange = (e) => {
+    setAnswer(e.target.id);
+  };
+  //will change names to what _Data is expecting !{ currentUserId, questionId, answer }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const qid = questionId;
+    const authedUser = currentUserId;
+
+    answer !== ""
+      ? handleVote({ authedUser, qid, answer })
+      : alert("You have to choose an answer"); //expecting { authedUser, qid, answer }
+  };
+
   return (
     <div className="m-5">
       <div className="list-group-item text-start p-3 card mb-2 m-auto box-shadow">
@@ -13,7 +33,7 @@ function Vote(props) {
           <div className="col-sm-4 m-auto text-center">
             <img
               src={
-                require("../avatars/" + users[currentUser.id].avatarURL).default
+                require("../avatars/" + users[currentUserId].avatarURL).default
               }
               className="img-fluid rounded-circle"
               alt="..."
@@ -28,25 +48,30 @@ function Vote(props) {
                   <input
                     className="form-check-input"
                     type="radio"
-                    name="optionOne"
+                    name="option"
                     id="optionOne"
+                    onChange={handleChange}
                   />
-                  <label className="form-check-label" for="flexRadioDefault1">
+                  <label className="form-check-label" htmlFor="optionOne">
                     {optionOne.text}
                   </label>
                 </div>
                 <div className="form-check py-2 ">
                   <input
-                    class="form-check-input"
+                    className="form-check-input"
                     type="radio"
-                    name="optionTwo"
+                    name="option"
                     id="optionTwo"
+                    onChange={handleChange}
                   />
-                  <label class="form-check-label" for="flexRadioDefault2">
+                  <label className="form-check-label" htmlFor="optionTwo">
                     {optionTwo.text}
                   </label>
                 </div>
-                <button className="text-light btn-sm btn-primary p-2 mt-4 rounded-3">
+                <button
+                  onClick={handleSubmit}
+                  className="text-light btn-sm btn-primary p-2 mt-4 rounded-3"
+                >
                   Submit
                 </button>
               </form>
@@ -62,10 +87,15 @@ const mapStateToProps = (
   { currentUser, users, questions },
   { questionId }
 ) => ({
-  currentUser: currentUser,
+  currentUserId: currentUser.id,
   users: users,
   question: questions[questionId],
 });
-const mapDispatchToProps = {};
+const mapDispatchToProps = (dispatch) => {
+  const handleAnswer = ({ authedUser, qid, answer }) => {
+    dispatch(handleAddAnswer({ authedUser, qid, answer })); //expecting answer = { authedUser, qid, answer }
+  };
+  return { handleVote: handleAnswer };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Vote);
