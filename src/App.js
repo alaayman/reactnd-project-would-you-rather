@@ -14,17 +14,17 @@ import Question from "./components/Question";
 // import  Vote  from "./components/Vote";
 
 function App(props) {
-  const { islogged, handleData } = props;
+  const { isLogged, handleData } = props;
 
   useEffect(() => handleData(), [handleData]);
 
-  // console.log("islogged ", props.islogged);
+  // console.log("isLogged ", props.isLogged);
   return (
     <div className="bg-gradient">
       <Navbar />
       <div className="App  m-auto">
         <div className="col-lg-8 col-md-8 col-sm-10">
-          {!islogged ? (
+          {!isLogged ? (
             <Login />
           ) : (
             <Routes>
@@ -46,7 +46,7 @@ function App(props) {
   );
 }
 const mapStateToProps = ({ currentUser }) => ({
-  islogged: currentUser.loggedin,
+  isLogged: currentUser.loggedin,
 });
 
 const mapDispatchToProps = (dispatch) => {

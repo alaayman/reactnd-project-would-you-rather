@@ -13,7 +13,7 @@ const userReducer = (state = {}, { type, payload }) => {
       return { ...state, ...payload };
     case ADD_QUESTION:
       // did that after noticing that _saveQuestion return formatted question only and dont change user
-      console.log("from user ", payload.author);
+      // console.log("from user ", payload.author);
       return {
         ...state,
         [payload.author]: {

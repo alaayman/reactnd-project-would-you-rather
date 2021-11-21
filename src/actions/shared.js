@@ -39,7 +39,7 @@ export const handleAddAnswer =
         dispatch(addAnswer({ authedUser, qid, answer }));
       })
       .catch((error) => console.log(error));
-    console.log("finished dispatching ");
+    // console.log("finished dispatching ");
   };
 
 export default handleInitialData;

@@ -13,6 +13,6 @@ export const newQuestion = (question) => {
 };
 
 export const addAnswer = (answer) => {
-  console.log(answer);
+  // console.log(answer);
   return { type: ADD_QUESTION_ANSWER, payload: answer };
 };
